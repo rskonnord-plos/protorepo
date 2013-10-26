@@ -5,5 +5,5 @@ from api import views
 urlpatterns = patterns(
     '',
     url(r'^$', views.index, name='index'),
-    url(r'^read/(?P<item_name>.*)', views.read, name='read'),
+    url(r'^item/(?P<item_name>.*)', views.item, name='item'),
 )

@@ -21,7 +21,13 @@ def index(request):
     return HttpResponse("Hello, world. You're at the index.")
 
 @csrf_exempt
-def read(request, item_name):
-    item = Item.objects.get(name=item_name)
-    serializer = ItemSerializer(item)
-    return JSONResponse(serializer.data)
+def item(request, item_name):
+    if request.method == 'GET':
+        item = Item.objects.get(name=item_name)
+        if request.GET.get('last') is not None:
+            return HttpResponse("TODO: Implement", content_type='text/plain')
+        else:
+            serializer = ItemSerializer(item)
+            return JSONResponse(serializer.data)
+    elif request.method == 'PUT':
+        return HttpResponse("TODO: Implement", content_type='text/plain')
